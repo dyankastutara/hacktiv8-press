@@ -8,6 +8,8 @@ Program ini menggunakan express js, dan database dengan mongo db
 
 - install dependencies untuk server
 
+- running server node app.js
+
 ```sh
 
 {
@@ -36,3 +38,25 @@ Program ini menggunakan express js, dan database dengan mongo db
 - jalankan file index dengan live-server yang ada di folder client
 
 
+## Routing Server
+
+### ARTIKEL
+
+|       ROUTE        |  AKSI  |                DESKRIPSI                 |
+| ------------------ | ------ | ---------------------------------------- |
+| /articles           | POST   | Menambahkan posting artikel              |
+| /articles           | GET    | Mendapatkan semua artikel                |
+| /articles/:id       | PATCH  | Mengubah artikel berdasarkan id          |
+| /articles/:id       | DELETE | Menghapus artikel berdasarkan id         |
+| /articles/:author   | GET    | Mendapatkan artikel berdasarkan author   |
+| /articles/:category | GET    | Mendapatkan artikel berdasarkan category |
+
+### Author
+
+|      ROUTE      |  AKSI  |            DESKRIPSI            |
+| --------------- | ------ | ------------------------------- |
+| /authors/signup | POST   | Menambahkan author              |
+| /authors        | GET    | Mendapatkan semua author        |
+| /authors/:id    | PATCH  | Mengubah author berdasarkan id  |
+| /authors/:id    | DELETE | Menghapus author berdasarkan id |
+| /authors/signin | POST   | Signin                          |
