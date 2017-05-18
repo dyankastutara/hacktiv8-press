@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 passport.use(new localStrategy(passportHelper.passport))
 
 app.use('/authors', Authors);
-app.use('/article', Article);
+app.use('/articles', Article);
 
 
 app.listen(3000)

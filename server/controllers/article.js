@@ -9,7 +9,7 @@ methode.insert = function(req, res){
 		content : req.body.content,
 		category : req.body.category,
 		author_id : req.body.author_id
-	})		
+	})
 
 	insertArticle.save(function(err, result){
 		if (err){
@@ -21,7 +21,45 @@ methode.insert = function(req, res){
 }
 
 methode.getAll = function(req, res){
-	Article.find({}, function(err, result){
+	Article.find({})
+	.populate('author_id')
+	.then(function(err, result){
+		if(err){
+			res.send(err)
+		}else{
+			res.send(result)
+		}
+	})
+}
+
+methode.getById = function(req, res){
+	Article.find({_id : req.params.id})
+	.populate('author_id')
+	.then(function(err, result){
+		if(err){
+			res.send(err)
+		}else{
+			res.send(result)
+		}
+	})
+}
+
+methode.getByAuthor = function(req, res){
+	Article.find({author_id : req.params.author})
+	.populate('author_id')
+	.then(function(err, result){
+		if(err){
+			res.send(err)
+		}else{
+			res.send(result)
+		}
+	})
+}
+
+methode.getByCategory = function(req, res){
+	Article.find({category : req.params.category})
+	.populate('author_id')
+	.then(function(err, result){
 		if(err){
 			res.send(err)
 		}else{
@@ -37,7 +75,7 @@ methode.update = function(req, res){
 			_id : req.params.id
 		}, {
 			$set : {
-			title : req.body.title || result.title, 
+			title : req.body.title || result.title,
 			content : req.body.content || result.content,
 			category : req.body.category || result.category,
 			author_id : result.author_id
