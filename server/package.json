@@ -1,15 +1,3 @@
-# hacktiv8-press
-
-## Deskripsi
-
-Program ini menggunakan express js, dan database dengan mongo db
-
-## Langkah - langkah :
-
-- install dependencies untuk server
-
-```sh
-
 {
   "name": "hacktiv8-press",
   "version": "0.0.1",
@@ -30,9 +18,3 @@ Program ini menggunakan express js, dan database dengan mongo db
     "passport-local": "^1.0.0"
   }
 }
-
-```
-
-- jalankan file index dengan live-server yang ada di folder client
-
-
