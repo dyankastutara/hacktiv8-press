@@ -2,9 +2,9 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var authorSchema = new Schema({
-	name : {type : String, require: true},
-	username : {type : String, require: true},
-	password : {type : String, require: true}
+	name : {type : String, required: true},
+	username : {type : String, required: true},
+	password : {type : String, required: true}
 }, {timestamps : true})
 
 var Author = mongoose.model('Author', authorSchema)

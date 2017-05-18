@@ -2,10 +2,10 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var ArticleSchema = new Schema({
-	title : {type : String, require: true},
-	content : {type : String, require: true},
+	title : {type : String, required: true},
+	content : {type : String, required: true},
 	author_id : [{type : String, ref: 'Author'}]
-}, {timestamps : true})
+}, {timestamp : true})
 
 var Article = mongoose.model('Article', ArticleSchema)
 
