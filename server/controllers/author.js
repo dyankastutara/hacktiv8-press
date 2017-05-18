@@ -1,5 +1,6 @@
 var Author = require('../models/author')
 var bcrypt = require('bcrypt')
+var jwt = require('jsonwebtoken')
 
 var methode = {}
 
@@ -8,7 +9,7 @@ methode.signup = function(req, res){
 		name : req.body.name,
 		username : req.body.username,
 		password : bcrypt.hashSync(req.body.password, 10)
-	})		
+	})
 
 	insertAuthor.save(function(err, result){
 		if (err){
@@ -19,6 +20,29 @@ methode.signup = function(req, res){
 	})
 }
 
+methode.signin = function(req, res){
+	var user = req.user
+	if(!user.msg){
+	var token = jwt.sign({
+		  name : user.name,
+	    username: user.username}, 'secret', {expiresIn : '1h'});
+			res.send({
+				'token' : token
+			})
+	}
+	res.send(user.msg)
+}
+
+methode.validation = function(req, res){
+	var token = req.headers.token
+	jwt.verify(token, 'secret', function(err, decoded) {
+	  if(err){
+			res.send(err)
+		}else{
+			res.send(decoded)
+		}
+	});
+}
 
 methode.getAll = function(req, res){
 	Author.find({}, function(err, result){
